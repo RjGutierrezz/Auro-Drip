@@ -1,12 +1,10 @@
-import express from "express"
+import app from "./app"
 
-const app = express()
-app.use(express.json())
 
-app.get("/health", (_req, res) => {
-  res.json({ok: true})
+// engine starter
+const PORT = 4000
+
+app.listen(PORT, () => {
+  console.log(`API running on http://localhost:${PORT}`)
 })
 
-app.listen(4000, () => {
-  console.log("API running on localhost:4000")
-})
