@@ -3,7 +3,8 @@ const SuggestionContent = () => {
     <div>
       <div className="suggestion-image-container">
         <div className="suggestion-body">
-          {/* add the suggestion image here */}
+          {/* add the suggestion image here! will probably pull some from the 
+          pinterest */}
         </div>
       </div>
     </div>
