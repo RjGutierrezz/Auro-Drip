@@ -3,13 +3,14 @@
 
 :root {
   --bg-color: #f8f7f8;
-  --hovered-color: #f1edec;
+  --hovered-color: #f3d0a4;
   --main-win: #fafafa;
-  --main-button: #c4a78a;
+  --main-button: rgba(102, 14, 96, 0.90);
   --search-bg: #f4f3f5;
   --text: #2f2e32;
   --test: #32a852;
   --search: #f4f3f5;
+  --category: #893f71
 }
 
 html, body, #root {
@@ -23,16 +24,16 @@ html, body, #root {
 
 
 body {
-  min-width: 320px;
-  min-height: 100vh;
-  background: linear-gradient(
-    160deg,
-    #ffedd8 0%,
-    #f3d5b5 45%,
-    #e7bc91 100%
-  );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* min-width: 320px; */
+  /* min-height: 100vh; */
+  /* background: linear-gradient( */
+  /*   160deg, */
+  /*   #ffedd8 0%, */
+  /*   #f3d5b5 45%, */
+  /*   #e7bc91 100% */
+  /* ); */
+  /* background-repeat: no-repeat; */
+  /* background-attachment: fixed; */
   /* background-image: url('/gridbg.png'); */
   /* background-size: cover; */
   /* background-position: center; */
@@ -40,23 +41,28 @@ body {
   /* background-attachment: fixed; */
 }
 
+.grainient-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
 /* global glass effect */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.70);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  /* backdrop-filter: blur(14px) saturate(140%); */
   box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.10),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    0 10px 30px rgba(0, 0, 0, 0.10);
   border-radius: 18px;
+  backdrop-filter: none;
 }
 
 
 .app-shell {
   width: calc(100% - 2rem);
-  height: calc(100vh - 2rem);
+  min-height: calc(100vh - 2rem);
   /* margin: 1.5rem; */
   padding: 1rem;
   display: grid;
@@ -99,9 +105,17 @@ body {
 }
 
 .sidebar-nav a:hover {
-  background: rgba(243, 213, 181, 0.45);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  transform: translateY(-1px);
+  /* background: var(--hovered-color); */
+  /* box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); */
+  /* transform: translateY(-1px); */
+
+
+  background: rgba(255, 255, 255, 0.05);
+  /* backdrop-filter: blur(14px) saturate(140%); */
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.10);
+  border-radius: 18px;
+  backdrop-filter: none; 
 }
 
 .nav-title {
@@ -223,13 +237,13 @@ body {
 .outfit-button {
   margin-left: 10px;
   /* background: rgba(156, 115, 75, 0.55); */
-  background: linear-gradient(
-    180deg,
-    #ffedd8 0%,
-    #e7bc91 45%,
-    #e7bc91 100%
-  );
   width: 170px;
+  background: var(--main-button);
+  backdrop-filter: blur(14px) saturate(140%);
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
   height: 50px;
   font-size: 18px;
   color: var(--bg-color);
@@ -240,7 +254,7 @@ body {
 /* wardrobe content css */
 .dashboard-main-content {
   display: grid;
-  grid-template-columns: 660px 1fr;
+  grid-template-columns: 850px 1fr;
   gap: 0.8rem; 
  
   flex: 1;
@@ -262,7 +276,7 @@ body {
 
 .wardrobe-container {
   /* this part allows the container to be fixed size and be scrollable */
-  height: 100%;
+  height: 100px;
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -315,9 +329,12 @@ body {
 }
 
 .category-btn.active {
-  background: linear-gradient(180deg, #e1e4e8 0%, #939ca3 100%);
+  background: var(--category);
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
   color: #fff;
-  border: 1px solid var(--bg-color)
+  /* border: 1px solid var(--bg-color) */
   /* background: var(--search); */
 }
 
@@ -334,8 +351,6 @@ body {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  background: transparent;
-
 }
 
 .clothing-grid {
@@ -483,7 +498,7 @@ body {
 }
 
 .wardrobe-container--compact {
-  height: 350px;
+  height: 450px;
 }
 
 .wardrobe-container--full {

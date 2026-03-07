@@ -12,6 +12,7 @@
   "dependencies": {
     "framer-motion": "^12.34.3",
     "motion": "^12.34.3",
+    "ogl": "^1.0.11",
     "react": "^19.2.4",
     "react-do": "^1.1.6",
     "react-dom": "^19.2.4",
