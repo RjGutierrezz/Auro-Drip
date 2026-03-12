@@ -413,6 +413,7 @@ body {
 }
 
 .clothing-image-container {
+  position: relative;
   width: 100%;
   aspect-ratio: 4/3;
   background: linear-gradient(
@@ -426,9 +427,9 @@ body {
 
 /*heart button*/
 .favorite-btn {
-  position: relative;
+  position: absolute;
   top: 10px;
-  left: 215px;
+  right: 10px;
   border: none;
   padding: 0;
   margin: 0;

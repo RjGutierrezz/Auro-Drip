@@ -1,22 +1,20 @@
-import ContentHeader from '../ContentHeader';
-import FavoritesContainer from '../FavoritesContainer';
-  const Dashboard = () => {
+import ContentHeader from "../ContentHeader";
+import FavoritesContainer from "../FavoritesContainer";
 
+const Dashboard = () => {
 	return (
 		<>
-      {/* not reall using dashboard-page here */}
+			{/* not reall using dashboard-page here */}
 			<div className="dashboard-page">
-        <ContentHeader/>
+				<ContentHeader />
 
-        <div className="display-page-body">
+				<div className="display-page-body">
 					<FavoritesContainer mode="full" />
 				</div>
-	</div>
-  
-
-     
-    </>
-  );
+			</div>
+		</>
+	);
 };
 
 export default Dashboard;
+

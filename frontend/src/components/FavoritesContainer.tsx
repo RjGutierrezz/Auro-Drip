@@ -1,5 +1,5 @@
-import FavoritesCategories from "./FavoritesCategories";
-import FavoriteOutfits from "./FavoriteOutfits";
+import WardrobeCategories from "./WardrobeCategories";
+import WardrobeClothes from "./WardrobeClothes";
 
 
 type FavoritesContainerProps = {
@@ -13,20 +13,23 @@ const FavoritesContainer = ({ mode = "compact" }: FavoritesContainerProps) => {
 		>
 			<div className="favorites-header">
 				{/* Title and Sort option here */}
+				
+				{/* Title and Sort option here */}
 				<h3>Favorites</h3>
-				<select className="sort-favorites glass-panel" name="sort" id="sort">
+				<select className="sort-wardrobe glass-panel" name="sort" id="sort">
 					<option value="default">Sort</option>
-					<option value="name-asc">(Oldest)</option>
-					<option value="name-dec">(Recent)</option>
+					<option value="name-asc">(A-Z)</option>
+					<option value="name-dec">(Z-A)</option>
 				</select>
 			</div>
-			<div className="favorites-categories">
+			<div className="wardrobe-categories">
 				{/* clothes categories here */}
-				<FavoritesCategories />
+				<WardrobeCategories />
 			</div>
 			<div className="wardrobe-main-content">
 				{/* clothes preview */}
-				<FavoriteOutfits />
+				<WardrobeClothes 
+ />
 			</div>
 		</div>
 	);

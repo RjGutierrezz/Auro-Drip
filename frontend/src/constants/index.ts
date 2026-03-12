@@ -2,6 +2,8 @@ import Dashboard from "../components/icons/layout-dashboard-icon"
 import Wardrobe from "../components/icons/library-icon"
 import Flame from "../components/icons/flame-icon"
 import Favorite from "../components/icons/heart-icon"
+import Sparkles from "../components/icons/sparkles-icon"
+
 
 import type { ComponentType } from "react";
 
@@ -34,6 +36,12 @@ export const sidebarLinks: SidebarLinkType[] = [
     href: "/favorite",
     icon: Favorite,
   },
+  {
+    name: "Add Item",
+    href: "",
+    icon: Sparkles,
+  },
+
 ]
 
 export type Category = {
