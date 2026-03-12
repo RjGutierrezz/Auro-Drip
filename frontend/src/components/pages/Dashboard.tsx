@@ -27,13 +27,15 @@ const Dashboard = () => {
             <div className="weather-api">
               <p>Weather API</p>
             </div>
-            <button className="outfit-button glass-panel">Generate Outfit</button>
+            <button className="outfit-button glass-card">Generate Outfit</button>
           </div>
         </div>
 
         <div className="dashboard-main-content">
           {/* add wardrobe quick preview / todays suggestion */}
-          <WardrobeContainer />  
+          <div className="glass-panel">
+            <WardrobeContainer />  
+          </div>
 
           <div className="suggestion-container glass-panel">
             <h3>Today's suggestion</h3>

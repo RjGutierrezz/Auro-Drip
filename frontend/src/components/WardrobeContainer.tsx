@@ -8,7 +8,7 @@ type WardrobeContainerProps = {
 const WardrobeContainer = ({ mode = "compact" }: WardrobeContainerProps) => {
 	return (
 		<div
-			className={`wardrobe-container wardrobe-container--${mode} glass-panel`}
+			className={`wardrobe-container wardrobe-container--${mode} `}
 		>
 			<div className="wardrobe-header">
 				{/* Title and Sort option here */}

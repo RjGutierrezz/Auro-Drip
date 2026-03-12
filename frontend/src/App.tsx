@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 import DashboardPage from "./components/pages/Dashboard";
 import FavoritePage from "./components/pages/FavoritePage";
 import OutfitPage from "./components/pages/OutfitPage";
@@ -50,7 +50,11 @@ function App() {
 					<Sidebar />
 					<div className="content">
 						<Routes>
-							<Route path="/dashboard" element={<DashboardPage />} />
+              {/* routes the user directly to the dashboard */}
+              <Route path="/" element={<Navigate to="/dashboard" replace/>}/>
+							
+              {/* links for the sidebar */}
+              <Route path="/dashboard" element={<DashboardPage />} />
 							<Route path="/wardrobe" element={<WardrobePage />} />
 							<Route path="/outfit" element={<OutfitPage />} />
 							<Route path="/favorite" element={<FavoritePage />} />
