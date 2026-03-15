@@ -5,6 +5,7 @@ import OutfitPage from "./components/pages/OutfitPage";
 import WardrobePage from "./components/pages/WardrobePage";
 import Sidebar from "./components/Sidebar";
 import Grainient from "./Grainient";
+import AddItemPage from "./components/pages/AddItemPage";
 
 function App() {
 	return (
@@ -58,7 +59,8 @@ function App() {
 							<Route path="/wardrobe" element={<WardrobePage />} />
 							<Route path="/outfit" element={<OutfitPage />} />
 							<Route path="/favorite" element={<FavoritePage />} />
-						</Routes>
+							<Route path="/addItem" element={<AddItemPage />} />
+            </Routes>
 					</div>
 				</main>
 			</div>

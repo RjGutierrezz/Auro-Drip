@@ -701,3 +701,46 @@ body {
   outline: none;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
 }
+
+
+/* Adding clothing item CSS */
+.add-item-page {
+  display: flex;
+  gap: 20px;
+}
+
+
+.add-clothing-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+  padding: 10px 40px 10px 40px;
+
+}
+
+.add-item-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.add-item-button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  height: 40px;
+  width: 120px;
+}
+
+.form-content {
+  min-height: 44px; 
+  padding: 0px 12px;
+  border: transparent;
+  border-radius: 10px;
+}
+
+.add-image-container {
+  padding: 0px 40px;
+  width: 50%;
+  min-height: 44px;
+}
+
