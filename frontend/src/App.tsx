@@ -1,11 +1,11 @@
-import { BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import AddItemPage from "./components/pages/AddItemPage";
 import DashboardPage from "./components/pages/Dashboard";
 import FavoritePage from "./components/pages/FavoritePage";
 import OutfitPage from "./components/pages/OutfitPage";
 import WardrobePage from "./components/pages/WardrobePage";
 import Sidebar from "./components/Sidebar";
 import Grainient from "./Grainient";
-import AddItemPage from "./components/pages/AddItemPage";
 
 function App() {
 	return (
@@ -19,9 +19,6 @@ function App() {
 						pointerEvents: "none",
 					}}
 				>
-
-        
-
 					<Grainient
 						color1="#ac6f82"
 						color2="#cfa093"
@@ -51,16 +48,16 @@ function App() {
 					<Sidebar />
 					<div className="content">
 						<Routes>
-              {/* routes the user directly to the dashboard */}
-              <Route path="/" element={<Navigate to="/dashboard" replace/>}/>
-							
-              {/* links for the sidebar */}
-              <Route path="/dashboard" element={<DashboardPage />} />
+							{/* routes the user directly to the dashboard */}
+							<Route path="/" element={<Navigate to="/dashboard" replace />} />
+
+							{/* links for the sidebar */}
+							<Route path="/dashboard" element={<DashboardPage />} />
 							<Route path="/wardrobe" element={<WardrobePage />} />
 							<Route path="/outfit" element={<OutfitPage />} />
 							<Route path="/favorite" element={<FavoritePage />} />
 							<Route path="/addItem" element={<AddItemPage />} />
-            </Routes>
+						</Routes>
 					</div>
 				</main>
 			</div>
@@ -69,4 +66,3 @@ function App() {
 }
 
 export default App;
-
