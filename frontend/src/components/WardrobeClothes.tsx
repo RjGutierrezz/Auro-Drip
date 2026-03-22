@@ -3,7 +3,7 @@ import ClothingCard from "./ClothingCard"
 // dont need this anymore
 // import { wardrobeClothesPlaceholder } from "../constants"
 
-import { getClothingItems, type ClothingItems } from "../api/clothing"
+import { getClothingItems, deleteClothingItem, type ClothingItems } from "../api/clothing"
 import { useEffect, useState } from "react"
 
 
@@ -38,7 +38,6 @@ const WardrobeClothes = ({
         // check to see if the data is there
         const data = await getClothingItems()
         
-        console.log("call test")
         // re-render the array to add the data to the array
         setItems(data)
       } catch (err){
@@ -64,6 +63,18 @@ const WardrobeClothes = ({
   const filteredItems = activeCategory === "All" 
     ? items : items.filter((item) => item.category === activeCategory)
   
+  // delete handler
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteClothingItem(id)
+
+      // leave the id's that we are not trying to delete
+      setItems((prev) => prev.filter((item) => item.id !== id))
+    } catch (error) {
+      setError("Could not delete the item.")
+    }
+  }
+
   return (
     <section className="clothing-grid">
       
@@ -76,6 +87,7 @@ const WardrobeClothes = ({
           color={clothes.color}
           isFavorited={!!favoritedById[clothes.id]}
           onToggleFavorite={() => toggleFavorite(clothes.id)}
+          onDelete={() => handleDelete(clothes.id)}
         />
       ))}
     </section>

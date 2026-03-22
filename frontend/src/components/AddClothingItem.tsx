@@ -57,7 +57,7 @@ export default function AddClothingItem({ onSubmit }: Props) {
 			/>
       <div className="add-item-button-container">
       <button className="add-item-button glass-panel" type="submit" disabled={submitting}>
-      {submitting ? "Adding..." : "Add"}
+        {submitting ? "Adding..." : "Add"}
       </button>
       </div>
 		</form>

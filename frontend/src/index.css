@@ -443,6 +443,12 @@ body {
   background: transparent;
 }
 
+.trash-btn {
+  margin-top: 5px;
+  border: none;
+  background: transparent;
+}
+
 /* instead of making classNames for h4 & p just do the following */
 .clothing-body h4 {
   font-size: 0.95rem;

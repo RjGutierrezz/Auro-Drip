@@ -14,6 +14,7 @@ export type ClothingItems = {
 };
 
 
+// Sends GET request to our backend for the items
 export async function getClothingItems(): Promise<ClothingItems[]> {
 	const res = await fetch(`${BASE_URL}/api/clothing`);
 	if (!res.ok) {
@@ -32,6 +33,8 @@ export type CreateClothingInput = {
 	color: string;
 };
 
+
+// Sends a POST request to our backend for one item
 export async function createClothingItems(input: CreateClothingInput) {
 	const res = await fetch(`${BASE_URL}/api/clothing`, {
 		method: "POST",
@@ -46,3 +49,22 @@ export async function createClothingItems(input: CreateClothingInput) {
 	const json = await res.json();
 	return json.data;
 }
+
+// Sends DELETE request to our backend for one item
+export async function deleteClothingItem(id: string) {
+
+  const res = await fetch(`${BASE_URL}/api/clothing/${id}`, {
+    method: "DELETE",
+  }) 
+
+  if (!res.ok) {
+    throw new Error("Failed to delete clothing item")
+  }
+
+  return res.json()
+}
+
+
+
+
+

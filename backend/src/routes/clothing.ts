@@ -51,6 +51,30 @@ router.post("/", async (req, res) => {
 
 })
 
+//ISSUE: the router cannot find the id (status 404 not found showing)
+// delete action for the database by reading id from URL 
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params
+
+  // error handling
+  if(!id) {
+    return res.status(400).json({ok: false, error: "Missing id"})
+  }
+  
+  try {
+    // deletes matching row in database
+    await prisma.clothingItem.delete({
+      where: {id},
+    })
+
+    return res.json({ok: true})
+  } catch (error) {
+    return res.status(404).json({ok: false, error: "Clothing item not found"})
+  }
+})
+
+
+
 export default router
 
 
