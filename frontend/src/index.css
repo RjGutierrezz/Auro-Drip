@@ -424,8 +424,8 @@ body {
 }
 
 .clothing-card:hover {
-  transform: scale(1.02) translateY(-1px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  transform: scale(1.03) translateY(-1px);
+  /* box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12); */
 }
 
 .clothing-image-container {
@@ -755,6 +755,11 @@ body {
   height: 400px;
 }
 
+.add-clothing-form h3{
+  color: var(--field-title);
+}
+
+
 .add-item-button-container {
   display: flex;
   justify-content: center;
@@ -872,7 +877,7 @@ body {
 .edit-panel-body {
   flex: 1 1 auto;
   min-height: 0;
-  padding: 24px;
+  padding: 30px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -985,7 +990,7 @@ body {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 24px;
+  width: 0px;
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.45) 0%,
@@ -1015,6 +1020,75 @@ body {
   from { transform: translateX(100%); opacity: 0.6;}
   to { transform: translateX(0); opacity: 1;}
 }
+
+
+/* loading, empty, and error message polish css */
+.state-card {
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  background: rgba(255. 255. 255. 0.55);
+  border: 1px solid rgba(255, 255, 255. 0.45);
+}
+
+.empty-state h3,
+.error-state h3{
+  margin: 0 0 0.35rem 0;
+}
+
+.empty-state p,
+.error-state p{
+ margin: 0;
+ opacity: 0.8;
+}
+
+.retry-btn {
+  margin-top: 0.8rem;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.55rem 0.85rem;
+  background: var(--category);
+  color: #fff;
+  cursor: pointer;
+}
+
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton-block,
+.skeleton-line {
+  background: linear-gradient(
+    90deg,
+    rgba(230, 230, 230, 0.85) 25%,
+    rgba(245, 245, 245, 0.95) 50%,
+    rgba(230, 230, 230, 0.85) 75%
+  );
+
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.2s linear infinite;
+  border-radius: 10px;
+}
+
+.skeleton-line {
+  height: 12px;
+  margin: 8px 0;
+}
+
+.skeleton-line-title {
+  width: 70%;
+}
+
+.skeleton-line-meta {
+  width: 45%
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+
+
 
 
 

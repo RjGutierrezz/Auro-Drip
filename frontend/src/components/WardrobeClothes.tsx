@@ -39,28 +39,58 @@ const WardrobeClothes = ({ activeCategory }: WardrobeClothesProps) => {
 	const [editCategory, setEditCategory] = useState("Tops");
 	const [editColor, setEditColor] = useState(itemColorPalette[0]);
 
+  const fetchItems = async () => {
+    setLoading(true)
+    setError(null)
+
+    try {
+			// check to see if the data is there
+      const data = await getClothingItems()
+      setItems(data)
+    } catch {
+      setError("We couldn't load your wardrobe right now.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
 	useEffect(() => {
 		// To use async inside useEffect you have to do the ff
-		const run = async () => {
-			try {
-				// check to see if the data is there
-				const data = await getClothingItems();
+	  fetchItems()
+  }, []);
 
-				// re-render the array to add the data to the array
-				setItems(data);
-			} catch (err) {
-				setError("Could not load the wardrobe items.");
-			} finally {
-				setLoading(false);
-			}
-		};
 
-		run();
-	}, []);
+  if (error) {
+    return (
+      <div className="state-card error-state">
+        <h3>Something went wrong</h3>
+        <p>{error}</p>
+        <button className="retry-btn" onClick={fetchItems}>
+          Try again
+        </button>
+      </div>
+    )
+  }
 
 	// checking error cases
 	if (loading) {
-		return <p>Loading wardobe...</p>;
+
+    // updating the loading screen so it looks more professional
+    return (
+      <section className="clothing-grid">
+        {Array.from({ length: 8}).map((_, i) => (
+          <article key={i} className="clothing-card skeleton-card">
+            <div className="clothing-image-container skeleton-block" />
+            <div className="clothing-body">
+              <div className="skeleton-line skeleton-line-title"/>
+              <div className="skeleton-line skeleton-line-meta"/>
+            </div>
+
+          </article>
+        ))}
+      </section>
+    )
+
 	} else if (error) {
 		return <p>{error}</p>;
 	} else if (items.length === 0) {
@@ -71,6 +101,27 @@ const WardrobeClothes = ({ activeCategory }: WardrobeClothesProps) => {
 		activeCategory === "All"
 			? items
 			: items.filter((item) => item.category === activeCategory);
+
+  // error cases for the empty storage or filtered items
+  if(!error && items.length === 0) {
+    return (
+      <div className = "state-card empty-state">
+        <h3>Your wardrobe is empty</h3>
+        <p>Add your first item from the Add Item page to get started.</p>
+      </div>
+    )
+  }
+
+  if(!error && filteredItems.length === 0) {
+    return (
+      <div className = "state-card empty-state">
+        <h3>No items in "{activeCategory}"</h3>
+        <p>Try another category or add a new item in this category.</p>
+      </div>
+    )
+  }
+
+
 
 	// delete handler
 	const handleDelete = async (id: string) => {

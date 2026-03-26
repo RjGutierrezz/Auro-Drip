@@ -48,6 +48,7 @@ export default function AddClothingItem({ onSubmit }: Props) {
 			</select>
 
 
+      {/* added color pallete for better color visualization */}
       <h3>Item Color</h3>
       <div className="color-palette" role="radiogroup" aria-label="Item color">
         {itemColorPalette.map((swatch) => (
