@@ -16,6 +16,7 @@ type WardrobeClothesProps = {
 	activeCategory: string;
 	searchTerm: string;
 	sortOrder: "name-dec" | "name-asc";
+  favoritesOnly?: boolean;
 };
 
 // for message and visual type for the success or error 
@@ -29,17 +30,43 @@ const WardrobeClothes = ({
 	activeCategory,
 	searchTerm,
 	sortOrder,
+  favoritesOnly = false,
 }: WardrobeClothesProps) => {
 	const [favoritedById, setFavoritedById] = useState<Record<string, boolean>>(
 		{},
 	);
 
-	const toggleFavorite = (id: string) => {
-		setFavoritedById((prev) => ({
-			...prev,
-			[id]: !prev[id],
-		}));
-	};
+
+  // removing this because this only affects and resets the UI
+	// const toggleFavorite = (id: string) => {
+	// 	setFavoritedById((prev) => ({
+	// 		...prev,
+	// 		[id]: !prev[id],
+	// 	}));
+	// };
+  
+  // this update replaces the old function with a backend PATCH toggle, making
+  // the heart persistent by using isFavorite from the backend as the single
+  // source
+  const toggleFavorite = async (id: string) => {
+    const currentItem = items.find((item) => item.id == id)
+    if(!currentItem) return
+
+    try {
+      const updated = await updateClothingItem(id, {
+        isFavorite: !currentItem.isFavorite,
+      })
+
+      setItems((prev) => 
+        prev.map((item) => (item.id === id ? updated : item)),
+      )
+    } catch (error) {
+      showToast("Couldn't update favorite right now.", "error")
+    }
+  }
+
+
+
 
   // states
 	// starts an empty array
@@ -78,6 +105,8 @@ const WardrobeClothes = ({
 			setLoading(false);
 		}
 	};
+
+  const sourceItems = favoritesOnly ? items.filter((item) => item.isFavorite) : items
 
   // this use effect is for data fetch on amount
 	useEffect(() => {
@@ -141,8 +170,8 @@ const WardrobeClothes = ({
 	// category filter
 	const filteredItems =
 		activeCategory === "All"
-			? items
-			: items.filter((item) => item.category === activeCategory);
+			? sourceItems
+			: sourceItems.filter((item) => item.category === activeCategory);
 
 	// error cases for the empty storage or filtered items
 	// if (!error && items.length === 0) {
@@ -265,7 +294,7 @@ const WardrobeClothes = ({
 						category={clothes.category}
 						color={clothes.color}
             imageUrl={clothes.imageUrl}
-						isFavorited={!!favoritedById[clothes.id]}
+            isFavorite={clothes.isFavorite}
 						onToggleFavorite={() => toggleFavorite(clothes.id)}
 						onDelete={() => handleDelete(clothes.id)}
 						onEdit={() => startEdit(clothes)}

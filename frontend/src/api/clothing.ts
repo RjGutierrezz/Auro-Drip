@@ -12,6 +12,7 @@ export type ClothingItems = {
   color: string;
   imageUrl: string;
   createdAt: string;
+  isFavorite: boolean;
 };
 
 export type UpdateClothingInput = {
@@ -19,6 +20,7 @@ export type UpdateClothingInput = {
   category?: string
   color?: string
   imageUrl?: string
+  isFavorite?: boolean
 }
 
 
@@ -90,6 +92,13 @@ export async function updateClothingItem( id: string, input: UpdateClothingInput
   
   // this part waits for the request to reach the backend
   // then for the backend to process it and make a response
+  const json = await res.json()
+  return json.data
+}
+
+export async function getFavoritedClothingItems() {
+  const res = await fetch(`${BASE_URL}/api/clothing?favorited=true`)
+  if (!res.ok) throw new Error("Failed to fetch favorited items")
   const json = await res.json()
   return json.data
 }

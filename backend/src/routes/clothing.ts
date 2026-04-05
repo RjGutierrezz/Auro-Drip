@@ -59,11 +59,36 @@ const createClothingSchema = z.object({
 
 
 
+// params schema
+const clothingIdParamsSchema = z.object({
+  id: z.string().trim().min(1, "Missing id"),
+})
 
+// patch schema
+//
+// UPDATE: added optional imageUrl
+const updateClothingSchema = z
+.object({
+  name: z.string().min(1).max(100).optional(),
+  category: categoryEnum.optional(),
+  color: z.string().min(1).max(30).optional(),
+
+  imageUrl: z.string().trim().url("Valid image URL is required").optional(),
+
+  // allow favorite status toggling from frontend 
+  isFavorite: z.boolean().optional()
+})
+// enforce that at least one field is provided
+.refine((val) => Object.keys(val).length > 0, {
+  message: "At least one field is required to update"
+})
 
 // returns current clothing list
-router.get("/", async (_req, res) => {
+router.get("/", async (req, res) => {
+
+  const favorited = req.query.favorited === "true"
   const items = await prisma.clothingItem.findMany({
+    where: req.query.favorited ? { isFavorite: favorited } : undefined,
     orderBy: { createdAt: "desc"},
   })
   res.json({ ok: true, data: items })
@@ -90,26 +115,7 @@ router.post("/", async (req, res) => {
 })
 
 
-// params schema
-const clothingIdParamsSchema = z.object({
-  id: z.string().trim().min(1, "Missing id"),
-})
 
-// updating the items
-//
-// UPDATE: added optional imageUrl
-const updateClothingSchema = z
-.object({
-  name: z.string().min(1).max(100).optional(),
-  category: categoryEnum.optional(),
-  color: z.string().min(1).max(30).optional(),
-
-  imageUrl: z.string().trim().url("Valid image URL is required").optional(),
-})
-// enforce that at least one field is provided
-.refine((val) => Object.keys(val).length > 0, {
-  message: "At least one field is required to update"
-})
 
 
 // editing the item inside the database

@@ -20,6 +20,8 @@ model ClothingItem {
   color String
 
   imageUrl String
+  
+  isFavorite Boolean @default(false)
 
   createdAt DateTime @default(now())
 }

@@ -60,6 +60,7 @@ const FavoritesContainer = ({ mode = "compact" }: FavoritesContainerProps) => {
           activeCategory={activeCategory}
 					searchTerm={searchTerm}
 					sortOrder={sortOrder}
+          favoritesOnly
         />
 			</div>
 		</div>

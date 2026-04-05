@@ -7,7 +7,7 @@ type ClothingCardProps = {
 	name: string;
 	category: string;
 	color: string;
-	isFavorited: boolean;
+	isFavorite: boolean;
   imageUrl: string;
 	onToggleFavorite: () => void;
   onEdit: () => void;
@@ -18,7 +18,7 @@ const ClothingCard = ({
 	name,
 	category,
 	color,
-	isFavorited,
+	isFavorite,
   imageUrl,
 	onToggleFavorite,
   onDelete,
@@ -44,7 +44,7 @@ const ClothingCard = ({
 							onToggleFavorite();
 						}}
 					>
-						<HeartIcon size={20} fill={isFavorited ? "#ff4d6d" : "none"} />
+						<HeartIcon size={20} fill={isFavorite ? "#ff4d6d" : "none"} />
 					</button>
           <button
             className="edit-btn"
