@@ -53,6 +53,9 @@ const WardrobeClothes = ({
 	const [editCategory, setEditCategory] = useState("Tops");
 	const [editColor, setEditColor] = useState(itemColorPalette[0]);
 
+  // true while patch request is in flight
+  const [isSavingEdit, setIsSavingEdit] = useState(false)
+
   const [toast, setToast] = useState<ToastState>(null)
 
   // toast helper: resuable helper to show a toast and then auto hides it after timer
@@ -329,8 +332,8 @@ const WardrobeClothes = ({
 						</div>
 
 						<div className="edit-panel-actions">
-							<button className="edit-btn-save" onClick={saveEdit}>
-								Save Changes
+							<button className="edit-btn-save" onClick={saveEdit} disabled={isSavingEdit}>
+                {isSavingEdit ? "Saving" : "Save Changes"}
 							</button>
 							<button className="edit-btn-cancel" onClick={cancelEdit}>
 								Cancel

@@ -10,13 +10,15 @@ export type ClothingItems = {
   name: string;
   category: string;
   color: string;
+  imageUrl: string;
   createdAt: string;
 };
 
 export type UpdateClothingInput = {
-  name: string
-  category: string
-  color: string
+  name?: string
+  category?: string
+  color?: string
+  imageUrl?: string
 }
 
 
@@ -32,11 +34,12 @@ export async function getClothingItems(): Promise<ClothingItems[]> {
 
 
 
-// POST functionality
+// POST functionality (required to be filled)
 export type CreateClothingInput = {
 	name: string;
 	category: string;
 	color: string;
+  imageUrl: string; 
 };
 
 

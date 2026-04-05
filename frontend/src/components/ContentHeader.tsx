@@ -5,7 +5,7 @@ const ContentHeader = () => {
     <div className="dashboard-header">
       {/* add search button and profile here */}
       <div>
-        <p>Placeholder for something...</p>
+        <p>Items | Outfit | Favorite (Counts)</p>
       </div>
 
       <div className="profile-container">

@@ -45,10 +45,16 @@ const categoryEnum = z.enum (["Tops", "Bottoms", "Shoes", "Outerwear"])
 
 // this is using Zod to prevent bad data entering the database
 // it expects JSON objects
+//
+// UPDATED to require imageUrl
 const createClothingSchema = z.object({
   name: z.string().min(1, "Name is required").max(100, "Name is too long"),
   category: z.string().min(1),
   color: z.string().min(1, "Color is required").max(30, "Color is too long"),
+
+  // must be a valid string
+  // if front end sends an invalid string or URL, request will fail with 400
+  imageUrl: z.string().trim().url("Valid image URL is required"),
 })
 
 
@@ -90,13 +96,16 @@ const clothingIdParamsSchema = z.object({
 })
 
 // updating the items
+//
+// UPDATE: added optional imageUrl
 const updateClothingSchema = z
 .object({
   name: z.string().min(1).max(100).optional(),
   category: categoryEnum.optional(),
   color: z.string().min(1).max(30).optional(),
-})
 
+  imageUrl: z.string().trim().url("Valid image URL is required").optional(),
+})
 // enforce that at least one field is provided
 .refine((val) => Object.keys(val).length > 0, {
   message: "At least one field is required to update"

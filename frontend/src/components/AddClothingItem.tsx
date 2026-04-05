@@ -1,9 +1,15 @@
 import { useState } from "react";
-import type { CreateClothingInput } from "../api/clothing";
 import { itemColorPalette } from "../constants";
 
+type AddClothingItemInput = {
+  name: string
+  category: string
+  color: string
+}
+
+
 type Props = {
-	onSubmit: (input: CreateClothingInput) => Promise<void>;
+	onSubmit: (input: AddClothingItemInput) => Promise<void>;
 };
 
 export default function AddClothingItem({ onSubmit }: Props) {

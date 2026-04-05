@@ -18,5 +18,8 @@ model ClothingItem {
   name String
   category String
   color String
+
+  imageUrl String
+
   createdAt DateTime @default(now())
 }
