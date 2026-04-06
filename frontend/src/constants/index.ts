@@ -162,13 +162,17 @@ export type InspirationItem = {
   id: string
   name: string
   vibe: string
+  imageUrl: string
 }
 
 export const inspitationItemsPlaceholder: InspirationItem[] = [
-  {id: "1", name:"Neutral Layering", vibe: "minimal"},
-  {id: "2", name:"Street Wear", vibe: "minimal"},
-  {id: "3", name:"Old Money", vibe: "minimal"},
-  {id: "4", name:"Business Core", vibe: "minimal"},
-  {id: "5", name:"Classy", vibe: "minimal"},
+  {id: "1", name:"Neutral Layering", vibe: "minimal", imageUrl:
+    "/images/simple.jpg"},
+  {id: "2", name:"Street Wear", vibe: "minimal", imageUrl:
+    "/images/streetwear.jpg"},
+  {id: "3", name:"Old Money", vibe: "minimal", imageUrl: "/images/old.jpg"},
+  {id: "4", name:"Business Core", vibe: "minimal", imageUrl:
+    "/images/streetwea.jpg"},
+  {id: "5", name:"Classy", vibe: "minimal", imageUrl: "/images/polo.jpg"},
   // {id: "6", name:"Casual", vibe: "minimal"},
 ]

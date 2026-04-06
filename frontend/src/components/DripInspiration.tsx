@@ -10,6 +10,7 @@ const DripInspiration = () => {
             key={clothes.id}
             name={clothes.name}
             vibe={clothes.vibe}
+            imageUrl={clothes.imageUrl}
           />
         ))}
       </div>
