@@ -5,6 +5,7 @@ import DripInspiration from "../DripInspiration";
 import ShinyText from "../ShinyText";
 import SuggestionContent from "../SuggestionContent";
 import WardrobeContainer from "../WardrobeContainer";
+import WeatherAPI from "../WeatherAPI";
 
 const Dashboard = () => {
   return (
@@ -38,7 +39,7 @@ const Dashboard = () => {
 
           <div className="essential">
             <div className="weather-api">
-            	<p>Weather API</p>
+              <WeatherAPI />
             </div>
             <button className="outfit-button glass-card">
               Generate Outfit
