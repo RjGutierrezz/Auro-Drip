@@ -8,10 +8,10 @@ type ClothingCardProps = {
 	category: string;
 	color: string;
 	isFavorite: boolean;
-  imageUrl: string;
+	imageUrl: string;
 	onToggleFavorite: () => void;
-  onEdit: () => void;
-  onDelete: () => void;
+	onEdit: () => void;
+	onDelete: () => void;
 };
 
 const ClothingCard = ({
@@ -19,24 +19,23 @@ const ClothingCard = ({
 	category,
 	color,
 	isFavorite,
-  imageUrl,
+	imageUrl,
 	onToggleFavorite,
-  onDelete,
-  onEdit,
+	onDelete,
+	onEdit,
 }: ClothingCardProps) => {
 	return (
 		<div>
 			<article className="clothing-card">
 				<div className="clothing-image-container">
-					
-          <button
-            className="trash-btn"
-            // call the function that will delete the item
-            onClick={onDelete}
-          >
-            <TrashIcon />
-          </button>
-          <button
+					<button
+						className="trash-btn"
+						// call the function that will delete the item
+						onClick={onDelete}
+					>
+						<TrashIcon />
+					</button>
+					<button
 						type="button"
 						className="favorite-btn"
 						onClick={(e) => {
@@ -46,21 +45,21 @@ const ClothingCard = ({
 					>
 						<HeartIcon size={20} fill={isFavorite ? "#ff4d6d" : "none"} />
 					</button>
-          <button
-            className="edit-btn"
-            onClick={onEdit}
-          >
-            <PenIcon />
-          </button>
+					<button className="edit-btn" onClick={onEdit}>
+						<PenIcon />
+					</button>
 
-          <img className="clothing-image" src={imageUrl} alt={name} />
+					<img className="clothing-image" src={imageUrl} alt={name} />
 				</div>
 				<div className="clothing-body">
 					{/* name needs to be here */}
 					<h4>{name}</h4>
 					{/* <p>{category}</p> */}
 					<span className="item-color-preview">
-						<span className="item-color-dot" style={{ backgroundColor: color }} />
+						<span
+							className="item-color-dot"
+							style={{ backgroundColor: color }}
+						/>
 					</span>
 				</div>
 			</article>

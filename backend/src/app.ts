@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import healthRouter from "./routes/health";
 import clothingRouter from "./routes/clothing";
+import outfitsRouter from "./routes/outfit";
 
 // express is a framework for node.js, designed to simplify the process of 
 // building server-side applications
@@ -15,5 +16,6 @@ app.use(express.json());
 
 app.use("/health", healthRouter);
 app.use("/api/clothing", clothingRouter);
+app.use("/api/outfits", outfitsRouter);
 
 export default app;
