@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { type GeneratedOutfit, generateOutfit } from "../../api/outfit";
 import HeartIcon from "../icons/heart-icon";
 import OutfitsContainer from "../OutfitsContainer";
 import ProfileHeader from "../ProfileHeader";
@@ -6,6 +7,64 @@ import ShinyText from "../ShinyText";
 
 const Dashboard = () => {
 	const [favorited, setFavorited] = useState(false);
+	const [prompt, setPrompt] = useState("");
+	const [isGenerating, setIsGenerating] = useState(false);
+	const [error, setError] = useState<string | null>(null);
+	const [generatedOutfit, setGeneratedOutfit] =
+		useState<GeneratedOutfit | null>(null);
+
+	const handleGenerate = async () => {
+		if (!prompt.trim()) {
+			setError("Please enter a prompt first.");
+			return;
+		}
+
+		setIsGenerating(true);
+		setError(null);
+
+		try {
+			const outfit = await generateOutfit({ prompt });
+			setGeneratedOutfit(outfit);
+		} catch (error) {
+			setError("Couldn't generate an outfit right now.");
+		} finally {
+			setIsGenerating(false);
+		}
+	};
+
+	const renderOutfitSlot = (
+		title: string,
+		item: GeneratedOutfit["items"]["top"],
+		emptyLabel: string,
+	) => (
+		<div className="outfit-layout-seperator">
+			<div className="outfit-result-row">
+				<div className="outfit-result-image">
+					{item ? (
+						<img src={item.imageUrl} alt={item.name} />
+					) : (
+						<div className="skeleton-block outfit-result-image-placeholder" />
+					)}
+				</div>
+
+				<div className="outfit-result-text">
+					<h2>{title}</h2>
+					{item ? (
+						<>
+							<p className="outfit-result-name">{item.name}</p>
+							<p className="outfit-result-color">{item.color}</p>
+						</>
+					) : (
+						<>
+							<div className="skeleton-line skeleton-line-title" />
+							<div className="skeleton-line skeleton-line-meta" />
+							<p className="outfit-empty-state">{emptyLabel}</p>
+						</>
+					)}
+				</div>
+			</div>
+		</div>
+	);
 
 	return (
 		<>
@@ -39,17 +98,25 @@ const Dashboard = () => {
 									className="input-bar"
 									type="text"
 									placeholder="Ex: Give me a warm formal outfit for today"
+									value={prompt}
+									onChange={(e) => setPrompt(e.target.value)}
 								/>
 
-								<button className="outfit-button glass-panel">
-									Generate Outfit
+								<button
+									type="button"
+									className="outfit-button glass-panel"
+									onClick={handleGenerate}
+									disabled={isGenerating}
+								>
+									{isGenerating ? "Generatting..." : "Generate Outfit"}
 								</button>
+								{error ? <p>{error}</p> : null}
 							</div>
 						</div>
 
 						{/* Insert images of the item here */}
 						<OutfitsContainer mode="half">
-							<div className="outfit-layout-seperator">
+							<div className="outfit-results-panel">
 								<button
 									type="button"
 									className="outfit-favorite-btn"
@@ -60,16 +127,24 @@ const Dashboard = () => {
 								>
 									<HeartIcon size={20} fill={favorited ? "#ff4d6d" : "none"} />
 								</button>
-								<h2>Tops</h2>
-							</div>
-
-							<hr className="section-divider" />
-							<div className="outfit-layout-seperator">
-								<h2>Bottoms</h2>
-							</div>
-							<hr className="section-divider" />
-							<div className="outfit-layout-seperator">
-								<h2>Shoes</h2>
+								{renderOutfitSlot(
+									"Tops",
+									generatedOutfit?.items.top ?? null,
+									"No top selected yet",
+								)}
+								{renderOutfitSlot(
+									"Bottoms",
+									generatedOutfit?.items.bottom ?? null,
+									"No bottom selected yet",
+								)}
+								{renderOutfitSlot(
+									"Shoes",
+									generatedOutfit?.items.shoes ?? null,
+									"No shoes selected yet",
+								)}
+							{generatedOutfit ? (
+								<p className="outfit-reasoning">{generatedOutfit.reasoning}</p>
+							) : null}
 							</div>
 						</OutfitsContainer>
 					</OutfitsContainer>
@@ -80,4 +155,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

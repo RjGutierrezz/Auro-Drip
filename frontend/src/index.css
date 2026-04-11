@@ -710,7 +710,7 @@ body {
 
 .outfit-container--half {
   position: relative;
-  height: 90%;
+  height: auto;
   width: 50%;
   margin-left: auto;
   justify-content: center;
@@ -718,6 +718,7 @@ body {
   flex-direction: column;
   margin-right: 10px;
 
+  padding: 20px;
   background: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.25);
   /* backdrop-filter: blur(14px) saturate(140%); */
@@ -742,31 +743,105 @@ body {
 }
 
 .outfit-layout-seperator {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.outfit-layout-seperator + .outfit-layout-seperator {
+  padding-top: 14px;
+  border-top: 1px solid rgba(47, 46, 50, 0.12);
 }
 
 .outfit-layout-seperator h2 {
-  margin: 0 0 0.5rem 0;
-  text-align: center;
+  margin: 0 0 0.35rem 0;
 }
 
-.outfit-layout-seperator hr {
-  width: 50%;
-  border: none;
-  border-top: 1.5px solid black;
+.outfit-results-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.outfit-result-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.outfit-result-image {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(245, 245, 247, 0.95) 0%,
+    rgba(232, 232, 235, 0.9) 55%,
+    rgba(220, 220, 224, 0.85) 100%
+  );
+}
+
+.outfit-result-image img,
+.outfit-result-image-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  display: block;
+}
+
+.outfit-result-image img {
+  object-fit: contain;
+  object-position: center;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.outfit-result-text {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.outfit-result-text h2 {
+  width: auto;
+  text-align: left;
+}
+
+.outfit-result-name,
+.outfit-result-color,
+.outfit-empty-state {
   margin: 0;
 }
 
-.section-divider {
-  width: 50%;
-  border: none;
-  border-top: 1.5px solid black;
-  margin: 0 auto;
-  flex-shrink: 0;
+.outfit-result-name {
+  font-weight: 600;
+}
+
+.outfit-result-color,
+.outfit-empty-state {
+  color: rgba(47, 46, 50, 0.72);
+}
+
+.outfit-empty-state {
+  margin-top: 4px;
+  font-size: 0.92rem;
+}
+
+.outfit-reasoning {
+  margin: 6px 0 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.35);
+  color: rgba(47, 46, 50, 0.85);
+  line-height: 1.45;
 }
 
 .outfit-favorite-btn {
@@ -1053,8 +1128,8 @@ body {
 /* properties to show when the user is updating */
 .edit-btn-save:disabled {
   opacity: 0.6;
-  curosr: not-allowed;
-  transform: "none";
+  cursor: not-allowed;
+  transform: none;
 }
 
 
@@ -1120,8 +1195,8 @@ body {
 .state-card {
   border-radius: 14px;
   padding: 1rem 1.1rem;
-  background: rgba(255. 255. 255. 0.55);
-  border: 1px solid rgba(255, 255, 255. 0.45);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.45);
 }
 
 .empty-state h3,
@@ -1160,7 +1235,7 @@ body {
   );
 
   background-size: 200% 100%;
-  animation: skeletonShimmer 1.2s linear infinite;
+  animation: skeletonShimmer 2s linear infinite;
   border-radius: 10px;
 }
 
@@ -1258,4 +1333,44 @@ body {
 }
 .right-part p {
   margin: 0;
+}
+
+
+/* outfit page images css */
+.outfit-layout-seperator {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.outfit-layout-seperator img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.img-placeholder {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.outfit-result-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.outfit-result-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }

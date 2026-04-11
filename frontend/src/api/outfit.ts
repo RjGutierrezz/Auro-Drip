@@ -1,5 +1,8 @@
 import type { ClothingItems } from "./clothing";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
+
 export type GeneratedOutfit = {
   reasoning: string;
   items: {
@@ -20,5 +23,12 @@ export async function generateOutfit(input: GenerateOutfitInput): Promise<Genera
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(input)
   })
+
+  if (!res.ok) {
+    throw new Error("Failed to generate outfit");
+  }
+
+  const json = await res.json();
+  return json.data;
 }
 
