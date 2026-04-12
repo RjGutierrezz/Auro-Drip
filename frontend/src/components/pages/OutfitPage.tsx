@@ -158,9 +158,17 @@ const Dashboard = () => {
 									generatedOutfit?.items.shoes ?? null,
 									"No shoes selected yet",
 								)}
-							{generatedOutfit ? (
-								<p className="outfit-reasoning">{generatedOutfit.reasoning}</p>
-							) : null}
+								{renderOutfitSlot(
+									"Outerwear",
+									generatedOutfit?.items.outerwear ?? null,
+									"No outerwear selected yet",
+								)}
+
+								{generatedOutfit ? (
+									<p className="outfit-reasoning">
+										{generatedOutfit.reasoning}
+									</p>
+								) : null}
 							</div>
 						</OutfitsContainer>
 					</OutfitsContainer>
