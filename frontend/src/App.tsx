@@ -1,11 +1,57 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+	BrowserRouter,
+	Navigate,
+	Outlet,
+	Route,
+	Routes,
+} from "react-router-dom";
+import { useAuth } from "./components/auth/AuthProvider";
 import AddItemPage from "./components/pages/AddItemPage";
 import DashboardPage from "./components/pages/Dashboard";
 import FavoritePage from "./components/pages/FavoritePage";
+import LoginPage from "./components/pages/LoginPage";
 import OutfitPage from "./components/pages/OutfitPage";
+import UserPage from "./components/pages/UserPage";
 import WardrobePage from "./components/pages/WardrobePage";
 import Sidebar from "./components/Sidebar";
 import Grainient from "./Grainient";
+
+// if no user exists, it redirects to /login
+// if user exist, it renders the app shell with the sidebar
+function ProtectedLayout() {
+	const { user, loading } = useAuth();
+
+	if (loading) {
+		return <div>Loading your session...</div>;
+	}
+
+	if (!user) {
+		return <Navigate to="/login" replace />;
+	}
+
+	return (
+		<main className="app-shell" style={{ position: "relative", zIndex: 1 }}>
+			<Sidebar />
+			<div className="content">
+				<Outlet />
+			</div>
+		</main>
+	);
+}
+
+function PublicOnlyRoute() {
+	const { user, loading } = useAuth();
+
+	if (loading) {
+		return <div>Loading your session ...</div>;
+	}
+
+	if (user) {
+		return <Navigate to="/dashboard" replace />;
+	}
+
+	return <LoginPage />;
+}
 
 function App() {
 	return (
@@ -44,22 +90,23 @@ function App() {
 						zoom={0.9}
 					/>
 				</div>
-				<main className="app-shell" style={{ position: "relative", zIndex: 1 }}>
-					<Sidebar />
-					<div className="content">
-						<Routes>
-							{/* routes the user directly to the dashboard */}
-							<Route path="/" element={<Navigate to="/dashboard" replace />} />
+				<Routes>
+					{/* routes the user directly to the dashboard */}
+					{/* public auth route */}
+					<Route path="/login" element={<PublicOnlyRoute />} />
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-							{/* links for the sidebar */}
-							<Route path="/dashboard" element={<DashboardPage />} />
-							<Route path="/wardrobe" element={<WardrobePage />} />
-							<Route path="/outfit" element={<OutfitPage />} />
-							<Route path="/favorite" element={<FavoritePage />} />
-							<Route path="/addItem" element={<AddItemPage />} />
-						</Routes>
-					</div>
-				</main>
+					<Route element={<ProtectedLayout />}>
+
+						{/* protected app routes */}
+						<Route path="/dashboard" element={<DashboardPage />} />
+						<Route path="/wardrobe" element={<WardrobePage />} />
+						<Route path="/outfit" element={<OutfitPage />} />
+						<Route path="/favorite" element={<FavoritePage />} />
+						<Route path="/addItem" element={<AddItemPage />} />
+						<Route path="/profile" element={<UserPage />} />
+					</Route>
+				</Routes>
 			</div>
 		</BrowserRouter>
 	);

@@ -3,7 +3,7 @@ import Wardrobe from "../components/icons/library-icon"
 import Flame from "../components/icons/flame-icon"
 import Favorite from "../components/icons/heart-icon"
 import Sparkles from "../components/icons/sparkles-icon"
-
+import User from "../components/icons/user-icon"
 
 import type { ComponentType } from "react";
 
@@ -40,6 +40,11 @@ export const sidebarLinks: SidebarLinkType[] = [
     name: "Add Item",
     href: "/addItem",
     icon: Sparkles,
+  },
+  {
+    name: "Profile",
+    href: "/profile",
+    icon: User,
   },
 
 ]
