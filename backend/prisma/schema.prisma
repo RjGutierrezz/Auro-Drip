@@ -19,6 +19,8 @@ model ClothingItem {
   category String
   color String
 
+  userId String
+
   style String
   occasion String
   warmth String
@@ -28,4 +30,5 @@ model ClothingItem {
   isFavorite Boolean @default(false)
 
   createdAt DateTime @default(now())
+  @@index([userId])
 }

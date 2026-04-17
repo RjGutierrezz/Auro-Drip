@@ -1,8 +1,11 @@
 import { Router } from "express";
 import { z } from "zod";
 import prisma from "../lib/prisma";
+import { requireAuth } from "../middleware/requireAuth";
 
 const router = Router();
+
+router.use(requireAuth)
 
 // request schema
 // to filter out the data and keeps AI request predictable
@@ -290,9 +293,12 @@ router.post("/generate", async (req, res) => {
 	}
 
 	// load the users wardrobe from the database
-	const items = await prisma.clothingItem.findMany({
-		orderBy: { createdAt: "desc" },
-	});
+  const items = await prisma.clothingItem.findMany({
+    where: {
+      userId: req.user!.id,
+    }, 
+    orderBy: { createdAt: "desc"},
+  })
 
 	if (items.length === 0) {
 		return res.status(400).json({

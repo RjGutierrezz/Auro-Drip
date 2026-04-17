@@ -1861,6 +1861,8 @@ body {
   background: rgba(160, 55, 55, 0.92);
 }
 
+
+
 .profile-confirm-backdrop {
   position: fixed;
   inset: 0;
@@ -1907,10 +1909,14 @@ body {
   font-weight: 600;
   cursor: pointer;
 }
+.profile-confirm-btn:hover {
+  color: var(--main-win);
+}
+
 
 .profile-confirm-btn-secondary {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--hovered-color);
 }
 
 .profile-confirm-error {
@@ -1952,6 +1958,9 @@ body {
   .profile-action-btn,
   .profile-confirm-btn {
     width: 100%;
+  }
+  .profile-confirm-btn:hover {
+    color: var(--main-win)
   }
 }
 

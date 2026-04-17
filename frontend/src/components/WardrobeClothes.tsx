@@ -168,7 +168,7 @@ const WardrobeClothes = ({
 	} else if (error) {
 		return <p>{error}</p>;
 	} else if (items.length === 0) {
-		return <p>There are no clothes yet 😓. Start uploading!</p>;
+		return <p className="profile-hero-text">There are no clothes yet. Start uploading!</p>;
 	}
 
 	// category filter

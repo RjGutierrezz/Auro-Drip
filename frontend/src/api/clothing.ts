@@ -1,7 +1,8 @@
 // Frontend API helper: to centralize backend calls
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+import { authFetch } from "./authFetch";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 
 export type ClothingItems = {
@@ -31,7 +32,7 @@ export type UpdateClothingInput = {
 
 // Sends GET request to our backend for the items
 export async function getClothingItems(): Promise<ClothingItems[]> {
-	const res = await fetch(`${BASE_URL}/api/clothing`);
+	const res = await authFetch(`${BASE_URL}/api/clothing`);
 	if (!res.ok) {
 		throw new Error("Failed to fetch clothing items");
 	}
@@ -55,7 +56,7 @@ export type CreateClothingInput = {
 
 // Sends a POST request to our backend for one item
 export async function createClothingItems(input: CreateClothingInput) {
-	const res = await fetch(`${BASE_URL}/api/clothing`, {
+	const res = await authFetch(`${BASE_URL}/api/clothing`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(input),
@@ -72,7 +73,7 @@ export async function createClothingItems(input: CreateClothingInput) {
 // Sends DELETE request to our backend for one item
 export async function deleteClothingItem(id: string) {
 
-  const res = await fetch(`${BASE_URL}/api/clothing/${id}`, {
+  const res = await authFetch(`${BASE_URL}/api/clothing/${id}`, {
     method: "DELETE",
   }) 
 
@@ -86,7 +87,7 @@ export async function deleteClothingItem(id: string) {
 // Sends a PATCH request to our backend to update the item info
 // waits for a response and returns the updated item
 export async function updateClothingItem( id: string, input: UpdateClothingInput ) {
-  const res = await fetch(`${BASE_URL}/api/clothing/${id}`, {
+  const res = await authFetch(`${BASE_URL}/api/clothing/${id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
 
@@ -105,7 +106,7 @@ export async function updateClothingItem( id: string, input: UpdateClothingInput
 }
 
 export async function getFavoritedClothingItems() {
-  const res = await fetch(`${BASE_URL}/api/clothing?favorited=true`)
+  const res = await authFetch(`${BASE_URL}/api/clothing?favorited=true`)
   if (!res.ok) throw new Error("Failed to fetch favorited items")
   const json = await res.json()
   return json.data

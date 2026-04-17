@@ -35,7 +35,7 @@ const AddClothingImage = ( {onImageSelected, imageUrl}: Props ) => {
 		<div className="add-image-container glass-panel">
 			<h3>Add images</h3>
 			<button className="image-placeholder glass-panel" onClick={openPicker}>
-				<p>Drop your files here or Browse</p>
+				<p className="profile-hero-text">Drop your files here or Browse</p>
 			</button>
 
       <input  
@@ -50,7 +50,7 @@ const AddClothingImage = ( {onImageSelected, imageUrl}: Props ) => {
         {imageUrl ? (
           <img className="selected-image-preview" src={imageUrl} alt="Selected clothing" />
         ) : (
-          <p>No image selected yet</p>
+          <p className="profile-hero-text">No image selected yet</p>
         )
         }
       </div>

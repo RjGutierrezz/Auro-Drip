@@ -1,7 +1,7 @@
+import { authFetch } from "./authFetch";
 import type { ClothingItems } from "./clothing";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
-
 
 export type GeneratedOutfit = {
   reasoning: string;
@@ -18,7 +18,7 @@ export type GenerateOutfitInput = {
 }
 
 export async function generateOutfit(input: GenerateOutfitInput): Promise<GeneratedOutfit> {
-  const res = await fetch(`${BASE_URL}/api/outfits/generate`, {
+  const res = await authFetch(`${BASE_URL}/api/outfits/generate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(input)
