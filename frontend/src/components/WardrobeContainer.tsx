@@ -33,7 +33,7 @@ const WardrobeContainer = ({ mode = "compact" }: WardrobeContainerProps) => {
 		>
 			<div className="wardrobe-header">
 				{/* Title and Sort option here */}
-				<h3>My Wardrobe</h3>
+				<h3 className="header-page-title">My Wardrobe</h3>
 
 				{/* bound sort state */}
 				<select

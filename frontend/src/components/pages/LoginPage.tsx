@@ -69,10 +69,23 @@ const LoginPage = () => {
 				});
 
 				// add a email confirmation here if you wanted to add this feature
-			}
+        setMessage("Account created. Please check your email to confirm your account before signing in.", );
+			
+        // immediately
+        setMode("signin")
+
+        // making sure that the sensitives fields are clear
+        setPassword("")
+        setConfirmPassword("");
+        setFullName("")
+      }
 		} catch (error) {
 			if (error instanceof Error) {
-				setError(error.message);
+        if (error.message.toLowerCase().includes("email not confirmed")) {
+          setError(error.message);
+        } else {
+          setError(error.message)
+        }
 			} else {
 				setError("Something went wrong. Please try again.");
 			}
@@ -219,7 +232,7 @@ const LoginPage = () => {
 					<p className="auth-form-note">
 						{isSignIn
 							? "Use the email and password connected to your wardrobe."
-							: "Your account will keep your wardrobe, favorites, and outfit ideas in one place."}
+							: "We'll send a confirmation link to your email before your account can be used."}
 					</p>
 				</form>
 			</div>

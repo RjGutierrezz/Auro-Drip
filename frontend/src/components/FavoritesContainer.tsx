@@ -28,7 +28,7 @@ const FavoritesContainer = ({ mode = "compact" }: FavoritesContainerProps) => {
 		>
 			<div className="favorites-header">
 				{/* Title and Sort option here */}
-				<h3>Favorites</h3>
+				<h3 className="header-page-title" >Favorites</h3>
 				<select
 					className="sort-wardrobe glass-panel"
 					value={sortOrder}

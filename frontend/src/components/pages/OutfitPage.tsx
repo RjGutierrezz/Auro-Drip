@@ -86,7 +86,7 @@ const Dashboard = () => {
 
 						<div className="outfit-layout">
 							<div className="prompt">
-								<h1>
+								<h1 className="profile-page-title">
 									<ShinyText
 										text="How can I help you today?"
 										speed={3.5}

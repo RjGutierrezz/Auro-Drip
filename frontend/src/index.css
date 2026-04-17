@@ -351,6 +351,7 @@ body {
 .wardrobe-header {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .wardrobe-container {
@@ -375,6 +376,7 @@ body {
 
 .favorites-header {
   display: flex;
+  margin-top: 20px;
   justify-content: space-between;
 }
 
@@ -582,7 +584,7 @@ body {
 .drip-container {
   margin: 0;
   min-height: 0;
-  padding: 0px 20px 0px 20px;
+  padding: 20px 20px 0px 20px;
 }
 
 .drip-inspo-container {
@@ -1615,5 +1617,328 @@ body {
   cursor: not-allowed;
 }
 
+/* profile page css */
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 100%;
+}
 
+.profile-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
 
+.profile-page-eyebrow,
+.profile-card-label {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--field-title);
+}
+
+.profile-page-title {
+  margin: 0;
+  font-size: 40px;
+  font-family: "Bodoni Moda SC", serif;
+  color: var(--text);
+}
+
+.header-page-title {
+  margin: 0;
+  font-size: 30px;
+  font-family: "Bodoni Moda SC", serif;
+  color: var(--text);
+}
+
+.profile-page-subtitle {
+  margin: 12px 0 0 0;
+  max-width: 680px;
+  line-height: 1.7;
+  color: rgba(47, 46, 50, 0.76);
+}
+
+.profile-stats-row {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.profile-count-card {
+  min-width: 104px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.profile-hero-card,
+.profile-details-card,
+.profile-actions-card {
+  padding: 24px;
+}
+
+.profile-hero-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  position: static;
+}
+
+.profile-avatar-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  flex: 0 0 128px;
+}
+
+.profile-hero-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-avatar-large {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(126, 53, 98, 0.96), rgba(84, 24, 76, 0.96));
+}
+
+.profile-photo-edit-btn,
+.profile-field-action {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--field-title);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.profile-field-action:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+.profile-hero-copy h2,
+.profile-details-card h2,
+.profile-actions-card h2,
+.profile-confirm-card h2 {
+  margin: 0;
+  color: var(--text);
+}
+
+.profile-hero-email {
+  margin: 10px 0 0 0;
+  font-size: 16px;
+  color: rgba(47, 46, 50, 0.74);
+}
+
+.profile-hero-text,
+.profile-section-note,
+.profile-action-item p,
+.profile-confirm-card p {
+  margin: 0;
+  line-height: 1.7;
+  color: rgba(47, 46, 50, 0.74);
+}
+
+.profile-details-card,
+.profile-actions-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.profile-section-heading h2 {
+  font-size: 28px;
+}
+
+.profile-section-note {
+  max-width: 360px;
+}
+
+.profile-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.profile-info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-info-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--field-title);
+}
+
+.profile-info-field-full {
+  grid-column: 1 / -1;
+}
+
+.profile-readonly-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 0 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(108, 72, 95, 0.14);
+}
+
+.profile-readonly-input span {
+  color: var(--text);
+}
+
+.profile-action-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-action-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.48);
+  border: 1px solid rgba(108, 72, 95, 0.1);
+}
+
+.profile-action-item h3 {
+  margin: 0 0 6px 0;
+  color: var(--text);
+}
+
+.profile-action-item-danger {
+  border-color: rgba(160, 55, 55, 0.12);
+}
+
+.profile-action-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  min-width: 132px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(137, 63, 113, 0.9);
+  cursor: pointer;
+}
+
+.profile-action-btn-danger,
+.profile-confirm-btn-primary {
+  background: rgba(160, 55, 55, 0.92);
+}
+
+.profile-confirm-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.profile-confirm-overlay {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(27, 20, 27, 0.28);
+  cursor: pointer;
+}
+
+.profile-confirm-card {
+  position: relative;
+  z-index: 1;
+  width: min(480px, 100%);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #fff7f8;
+  border: 1px solid rgba(108, 72, 95, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(44, 28, 40, 0.18);
+}
+
+.profile-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.profile-confirm-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.profile-confirm-btn-secondary {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+@media (max-width: 720px) {
+  .profile-hero-card {
+    flex-direction: column;
+  }
+
+  .profile-avatar-stack {
+    flex-basis: auto;
+  }
+
+  .profile-page-title {
+    font-size: 32px;
+  }
+
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-action-item,
+  .profile-readonly-input,
+  .profile-confirm-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .profile-action-btn,
+  .profile-confirm-btn {
+    width: 100%;
+  }
+}
