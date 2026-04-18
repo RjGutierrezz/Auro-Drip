@@ -1040,7 +1040,7 @@ body {
 
 .cancel-btn {
   padding: 10px 20px 10px 20px;
-  color: #e63636;
+  color: #a84747;
   font-weight: bold;
   cursor: pointer;
 }
@@ -1935,6 +1935,13 @@ body {
   cursor: not-allowed;
 }
 
+.image-placeholder-active {
+  transform: scale(1.01);
+  background: rgba(137, 63, 113, 0.08);
+}
+.image-placeholder-active::before {
+  border-color: var(--category);
+}
 
 @media (max-width: 720px) {
   .profile-hero-card {
@@ -1968,5 +1975,7 @@ body {
     color: var(--main-win)
   }
 }
+
+
 
 

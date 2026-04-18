@@ -44,7 +44,7 @@ const Dashboard = () => {
 								speed={3.5}
 								delay={1.5}
 								color="#2f2e32"
-								shineColor="#ffffff"
+								shineColor="#f3d0a4"
 								spread={120}
 								direction="left"
 								yoyo={false}
