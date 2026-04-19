@@ -1,128 +1,122 @@
 <div align="center">
-  <br />
-    <h3 align="center">Aura Drip App</h3>
+  <h1>Aura Drip</h1>
+  <p>
+    A full-stack wardrobe management and outfit recommendation app built with React, Express, Prisma, PostgreSQL, and Supabase.
+  </p>
 
-    ![](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-    ![](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
-    ![](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-    ![](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-    ![](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
-    ![](https://img.shields.io/badge/Radix_UI-6200EE?style=for-the-badge&logo=radix-ui&logoColor=white)
-    <img src="/frontend/images/dashboard.jpg" alt="Project Banner">
-    </a>
-  <br />
+  <p>
+    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript badge" />
+    <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React badge" />
+    <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite badge" />
+    <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express badge" />
+    <img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma badge" />
+    <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase badge" />
+  </p>
+
+  <img src="./frontend/public/images/dashboard.jpg" alt="Aura Drip dashboard preview" width="900" />
 </div>
 
+## Table Of Contents
 
-# Aura Drip
+1. [Project Introduction](#project-introduction)
+2. [Project Overview And Features](#project-overview-and-features)
+3. [Tech Stack, APIs, And Other Resources](#tech-stack-apis-and-other-resources)
+4. [Getting Started: Setup And Running Instructions](#getting-started-setup-and-running-instructions)
+5. [Deployment Notes](#deployment-notes)
+6. [Challenges And What I Learned](#challenges-and-what-i-learned)
+7. [Future Improvements](#future-improvements)
+8. [How To Contribute And Report Issues](#how-to-contribute-and-report-issues)
 
-Aura Drip is a full-stack wardrobe management and outfit recommendation app that
-helps users organize their clothing, upload images, save favorites, and generate
-outfit suggestions based on their own wardrobe. I built this project as a way to
-strengthen my full-stack engineering skills while creating something practical,
-visual, and user-focused.
-
-**Frontend:** React + TypeScript + Vite  
-**Backend:** Express + TypeScript + Prisma + PostgreSQL  
-**Deployment:** Vercel (frontend) + Render (backend)
-
----
-Why I Built This Project
-I wanted a project that showed more than just isolated frontend work. Aura Drip gave me a chance to build something that feels like a real product while also stretching my backend, deployment, and debugging skills.
-As a new CS graduate, I know I still have a lot to learn, but this project reflects how I like to work:
-- build something practical
-- solve real problems end-to-end
-- improve the product after feedback
-- keep learning through iteration
-This is the kind of work I want to keep doing as I start my career in software engineering.
----
 ## Project Introduction
 
-As a new computer science graduate, I wanted to build a project that felt closer to a real product than a tutorial app. Aura Drip started as an idea around fashion and personal organization, but it quickly became a way for me to practice full-stack development, authentication, file uploads, database design, protected APIs, deployment, and responsive frontend design.
-The goal of the app is simple: give users a digital wardrobe where they can manage their clothing items and get outfit suggestions based on what they already own. Instead of relying on static sample data, the app stores user-specific items in a database and protects access through authentication.
-This project was especially valuable for me because it forced me to work through real engineering problems such as:
+Aura Drip is a personal full-stack project I built to practice shipping a product that feels closer to a real application than a classroom exercise or tutorial clone. The idea was to create a digital wardrobe where users can upload their own clothing, organize it in one place, favorite pieces they wear most often, and generate outfit suggestions based on what they already own.
 
-- building authenticated CRUD routes
-- handling user-specific data ownership
-- connecting a deployed frontend and backend across different platforms
-- configuring environment variables for local and production use
-- debugging deployment issues related to Prisma, database URLs, and Supabase redirects
-- improving mobile responsiveness after deployment
----
-## Project Overview and Features
+As a new computer science graduate working toward an entry-level software engineering role, I wanted this project to show more than isolated frontend components. I wanted it to demonstrate that I can think through the full product lifecycle: database design, authentication, protected API routes, file uploads, deployment, debugging production issues, and iterative UI improvements.
 
-Aura Drip is a wardrobe organizer and outfit generator built around the idea of personalized fashion management.
+This project pushed me to solve real engineering problems such as:
+- designing a user-scoped data model for wardrobe items
+- building authenticated CRUD routes with request validation
+- connecting a Vercel frontend to a Render backend
+- working with Supabase Auth and Supabase Storage
+- debugging Prisma migration and database connection issues in production
+- revisiting UI density and mobile responsiveness after deployment
+
+## Project Overview And Features
+
+Aura Drip is centered around personalized wardrobe management. Instead of recommending outfits from a generic catalog, the app works with the clothing a user has personally uploaded.
+
 A signed-in user can:
-
-- create an account and sign in securely with Supabase Auth
-- upload clothing items with images
-- store item details such as category, color, style, occasion, and warmth
-- browse their wardrobe in a searchable and filterable interface
-- mark items as favorites
-- edit or delete saved items
+- create an account and confirm their email
+- sign in securely with Supabase Auth
+- upload clothing images to Supabase Storage
+- save item details such as category, color, style, occasion, and warmth
+- browse a searchable and filterable wardrobe
+- favorite items for faster access later
+- edit or delete existing items
 - generate outfit suggestions based on a natural language prompt
-- view a profile page with wardrobe-related stats
----
+- view wardrobe-related counts on the dashboard and profile page
+
 ### Core Features
 
-#### 1. Authentication and Protected User Data
+#### 1. Authentication And Protected User Data
 
-Users can create an account, confirm their email, sign in, and access only their own wardrobe data. The backend verifies Supabase JWTs and uses the authenticated user ID to scope all clothing records.
+Users can create an account, sign in, and access only their own clothing data. On the backend, Supabase JWTs are verified before protected routes are allowed to access wardrobe records. Every clothing item is tied to a specific `userId`, which prevents one user from reading or modifying another user's data.
 
 #### 2. Wardrobe Management
 
-Users can add clothing items with:
-
+Users can create clothing items with the following attributes:
 - name
 - category
 - color
 - style
 - occasion
 - warmth
-- image upload
-  They can also:
+- image URL
+
+Once an item is created, the user can:
 - search by item name
 - filter by category
 - sort alphabetically
-- update existing items
-- delete items
+- update item information
+- delete an item from the database
 
 #### 3. Favorites
 
-Users can favorite clothing items and view them in a dedicated favorites page. Favorite state is persisted in the database rather than stored only in local UI state.
+The app allows users to favorite wardrobe items and view them in a dedicated favorites page. Favorite state is stored in the database rather than only in local UI state, which makes the experience persistent across sessions.
 
 #### 4. Outfit Generator
 
-Users can enter prompts such as:
+Users can type prompts such as:
+- `Give me a warm formal outfit for today`
+- `I want something casual for the weekend`
+- `Create a business outfit using my favorites`
 
-- "Give me a warm formal outfit for today"
-- "I want something casual for the weekend"
-- "Create a business outfit using my favorites"
-  The backend reads the prompt, extracts styling preferences, scores available items, and returns a generated outfit plus reasoning for why those pieces were selected.
+The backend reads the prompt, extracts useful styling preferences, scores available wardrobe items, and returns a generated outfit with a short explanation of why those items were chosen.
 
 #### 5. Image Uploads
 
-Clothing images are uploaded to Supabase Storage and then saved with a public image URL in the database, allowing each wardrobe item to have its own image.
+Clothing images are uploaded to the `clothing-images` bucket in Supabase Storage. After upload, the public image URL is saved in PostgreSQL through Prisma so each clothing item has a stored image reference.
 
 #### 6. Responsive UI
 
-The interface was designed and later refined for mobile responsiveness. This includes:
+The interface was designed and later refined for mobile responsiveness. Recent updates included:
+- a mobile-first layout pass
+- smaller and more balanced dashboard cards on phones
+- a sticky bottom tab bar for mobile navigation
+- better control spacing on wardrobe and favorites pages
+- more consistent card sizing between wardrobe and favorite views
 
-- a mobile-friendly layout
-- improved card sizing
-- a sticky bottom navigation experience on smaller screens
-- resized image sections for a better mobile dashboard experience
----
-## Tech Stack, APIs, and Other Resources
+## Tech Stack, APIs, And Other Resources
+
 ### Frontend
 - React 19
-- HTML
-- CSS
 - TypeScript
 - Vite
 - React Router
 - Supabase JavaScript Client
 - Framer Motion / Motion
+- CSS
+
 ### Backend
 - Node.js
 - Express
@@ -131,76 +125,207 @@ The interface was designed and later refined for mobile responsiveness. This inc
 - PostgreSQL
 - Zod
 - JOSE
-### Database and Storage
+
+### Database And Storage
 - Supabase PostgreSQL
 - Supabase Storage
+
 ### Authentication
 - Supabase Auth
 - JWT verification on the backend using Supabase JWKS
----
-Future Improvements
-- User page delete account functionality
-- A live responsive drip inspo api that will change daily
-- Suggestion can match the current weather
-- Allow the user to favorite the outgit recommended for them and be able to save
-  it in the database
-- User profile photo functionality
 
-Supabase Auth Redirects
-For email confirmation links to work properly in both development and production, Supabase Auth URL settings need to include:
-- the Vercel production URL
-- localhost development URLs
-This was one of the deployment issues I had to debug while building the project.
----
-Challenges and What I Learned
+### Deployment
+- Vercel for the frontend
+- Render for the backend
+
+## Getting Started: Setup And Running Instructions
+
+### Prerequisites
+
+Before running the project locally, make sure you have:
+- Node.js installed
+- npm installed
+- a Supabase project
+- a PostgreSQL connection string
+- Git installed
+
+### 1. Clone The Repository
+
+```bash
+git clone https://github.com/RjGutierrezz/Aura-Drip.git
+cd aura-drip
+```
+
+### 2. Install Dependencies
+
+Install frontend dependencies:
+
+```bash
+cd frontend
+npm install
+```
+
+Install backend dependencies:
+
+```bash
+cd ../backend
+npm install
+```
+
+### 3. Set Up Environment Variables
+
+Create a `frontend/.env` file:
+
+```env
+VITE_API_URL=http://localhost:4000
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+Create a `backend/.env` file:
+
+```env
+DATABASE_URL=your_postgres_connection_string
+SUPABASE_URL=your_supabase_project_url
+```
+
+Notes:
+- `SUPABASE_URL` should look like `https://your-project.supabase.co`
+- `DATABASE_URL` must be a PostgreSQL connection string, not the Supabase project URL
+- for hosted environments like Render, the Supabase session pooler connection string worked more reliably than the direct database URL
+
+### 4. Run Prisma Migrations
+
+From the `backend` directory:
+
+```bash
+npx prisma migrate deploy
+npx prisma generate
+```
+
+For local development, you can also use:
+
+```bash
+npx prisma migrate dev
+```
+
+### 5. Run The Backend
+
+From the `backend` directory:
+
+```bash
+npm run dev
+```
+
+The backend runs on `http://localhost:4000`.
+
+### 6. Run The Frontend
+
+From the `frontend` directory:
+
+```bash
+npm run dev
+```
+
+The frontend runs on `http://localhost:5173`.
+
+## Deployment Notes
+
+The project is deployed as two separate services:
+- `frontend/` on Vercel
+- `backend/` on Render
+
+### Frontend Environment Variables
+
+Vercel needs:
+- `VITE_API_URL`
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+
+### Backend Environment Variables
+
+Render needs:
+- `DATABASE_URL`
+- `SUPABASE_URL`
+
+### Render Build Notes
+
+The backend required Prisma generation and migration deployment during the build process:
+
+```bash
+npm install && npx prisma generate && npx prisma migrate deploy
+```
+
+One deployment issue I had to work through was that the direct Supabase PostgreSQL connection did not work properly from Render. Switching to the Supabase session pooler fixed the network reachability problem.
+
+### Supabase Auth Redirect Notes
+
+Email confirmation links needed to be updated so they pointed to the production Vercel deployment rather than localhost. This involved configuring Supabase Auth URL settings and allowed redirect URLs for both local development and production.
+
+## Challenges And What I Learned
+
 This project taught me much more than just how to build a CRUD app.
-1. Full-Stack Authentication Is More Than Login Forms
-I learned how authentication affects both frontend and backend architecture. It is not enough to let users sign in on the client. The backend also has to verify tokens and enforce ownership of data.
-2. Deployment Has Its Own Debugging Layer
+
+### 1. Full-Stack Authentication Is More Than Login Forms
+
+I learned that authentication affects both frontend and backend architecture. It is not enough to let users sign in on the client. The backend also has to verify tokens and enforce ownership of data.
+
+### 2. Deployment Has Its Own Debugging Layer
+
 Some of the most valuable lessons came after the app worked locally. I had to troubleshoot:
 - missing production environment variables
-- incorrect redirect URLs
+- incorrect Supabase redirect URLs
 - Prisma migration deployment
 - the difference between a Supabase project URL and a database connection string
 - session pooler vs direct PostgreSQL connection
 - frontend/backend communication across Vercel and Render
-3. Product Polish Matters
+
+### 3. Product Polish Matters
+
 I spent time revisiting mobile responsiveness, card sizing, navigation, and UI density. That process reminded me that shipping a feature is only part of the job. Making it feel usable and polished is just as important.
-4. I Became More Comfortable Owning Problems End-to-End
-This project helped me grow beyond writing isolated components. I had to think through:
+
+### 4. I Became More Comfortable Owning Problems End-To-End
+
+This project helped me grow beyond isolated components. I had to think through:
 - the data model
 - request validation
 - user flows
 - deployment environments
-- debugging production issues
-- UX improvements after real usage
-That end-to-end ownership is one of the things I wanted this project to demonstrate as I work toward an entry-level software engineering role.
----
-Future Improvements
+- production debugging
+- iterative UX improvements after real testing
+
+That end-to-end ownership is one of the main things I wanted this project to demonstrate as I work toward an entry-level software engineering role.
+
+## Future Improvements
+
 Some features I would like to add next:
+- delete account functionality on the user page
 - better weather-aware outfit recommendations
 - stronger prompt parsing and recommendation logic
 - saved generated outfits
-- user profile editing
+- user profile photo support
 - drag-and-drop image uploads
-- tests for backend routes and frontend components
+- automated tests for backend routes and frontend components
 - code splitting and bundle optimization
-- admin/dev tooling for easier dataset and image inspection
----
-How to Contribute and Report Issues
-This project is primarily a portfolio project, but feedback is always welcome!
-If you’d like to contribute:
+
+## How To Contribute And Report Issues
+
+This project is primarily a portfolio project, but feedback is always welcome.
+
+If you would like to contribute:
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Open a pull request with a clear description
-If you find a bug or have a feature suggestion:
+4. Open a pull request with a clear explanation of what changed
+
+If you find a bug or want to suggest an improvement:
 - open a GitHub issue
-- include clear reproduction steps if possible
+- include reproduction steps if possible
 - include screenshots or logs when relevant
-I appreciate thoughtful feedback, especially around:
+
+I especially appreciate feedback around:
 - code quality
-- UX improvements
+- UI and UX improvements
 - architecture decisions
 - backend validation and security
-- deployment best practices
+- deployment and production-readiness
